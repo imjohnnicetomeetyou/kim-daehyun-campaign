@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+/* ─── Ultra Modern Political Design System ──────────────────────────────── */
+:root {
+  /* High-Impact Colors */
+  --color-primary:      #E60012; /* Vibrant, energetic red */
+  --color-secondary:    #050505; /* Deep absolute black-navy for stark contrast */
+  --color-accent:       #C5A059; /* Sophisticated muted gold */
+
+  /* Surface Colors */
+  --color-bg:           #FFFFFF;
+  --color-bg-muted:     #F4F4F5; /* Cool light gray */
+  --color-bg-dark:      #0A0A0A; /* Near black */
+
+  /* Typography Colors */
+  --color-text:         #171717; /* Off-black for better readability than pure black */
+  --color-text-light:   #737373;
+  --color-text-inverse: #FFFFFF;
+
+  /* UI Utilities */
+  --color-border:       #E5E5E5;
+  --color-border-dark:  #262626;
+
+  /* Base Typography */
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+@theme inline {
+  --color-primary:       var(--color-primary);
+  --color-secondary:     var(--color-secondary);
+  --color-accent:        var(--color-accent);
+  --color-bg:            var(--color-bg);
+  --color-bg-muted:      var(--color-bg-muted);
+  --color-bg-dark:       var(--color-bg-dark);
+  --color-text-body:     var(--color-text);
+  --color-text-light:    var(--color-text-light);
+  --color-text-inverse:  var(--color-text-inverse);
+  --color-border:        var(--color-border);
+  --color-border-dark:   var(--color-border-dark);
+}
+
+/* ─── Base Reset & Body ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* ─── Senior Accessibility Utilities ────────────────────────────────────── */
+html.text-size-normal { font-size: 16px; }
+html.text-size-large { font-size: 18px; }
+html.text-size-xl { font-size: 20px; }
+
+/* ─── Typography Enhancements ────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+/* ─── Custom Animations & Effects ────────────────────────────────────────── */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+}
+
+.text-stroke-light {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+  color: transparent;
+}
+
+.text-stroke-dark {
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.15);
+  color: transparent;
+}
+
+.clip-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Layout Utilities ──────────────────────────────────────────────────── */
+.section-container {
+  width: 100%;
+  max-width: 1440px; /* Wider container for modern look */
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .section-container {
+    padding-inline: 4rem;
+  }
+}
+
+/* ─── UI Components ─────────────────────────────────────────────────────── */
+.btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.125rem;
+  letter-spacing: -0.01em;
+  border-radius: 9999px; /* Pill shape */
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.2), rgba(255,255,255,0));
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(230, 0, 18, 0.4);
+}
+
+.btn-primary:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  background-color: transparent;
+  color: var(--color-secondary);
+  font-weight: 800;
+  font-size: 1.125rem;
+  border-radius: 9999px;
+  border: 2px solid var(--color-secondary);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-secondary);
+  color: #ffffff;
+}
+
+/* Custom Selection */
+::selection {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
