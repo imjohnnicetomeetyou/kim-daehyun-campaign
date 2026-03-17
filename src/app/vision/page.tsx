@@ -109,10 +109,9 @@ function VisionSection({ vision, index }: { vision: typeof VISIONS[0], index: nu
     >
       {/* Dynamic Background per Vision */}
       <div className="absolute inset-0 pointer-events-none z-0 opacity-20">
-        <motion.div 
-          style={{ y: y1 }}
+        <motion.div
+          style={{ y: y1, backgroundColor: vision.color }}
           className="absolute top-[10%] right-[10%] w-[40vw] h-[40vw] rounded-full blur-[120px] mix-blend-screen"
-          style={{ backgroundColor: vision.color }}
         />
       </div>
 
